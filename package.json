@@ -1,0 +1,8 @@
+{
+  "name": "norra-fashion-online",
+  "version": "3.0.0",
+  "private": true,
+  "scripts": {"start":"node server.js","dev":"node server.js"},
+  "engines": {"node": ">=20"},
+  "dependencies": {"express":"^4.21.2","mongoose":"^8.18.0"}
+}
