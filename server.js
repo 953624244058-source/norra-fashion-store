@@ -88,4 +88,4 @@ app.get('/api/analytics',async(req,res)=>{const rows=useMongo?await Analytics.fi
 app.get('/api/feedback',auth,async(req,res)=>res.json(useMongo?await Feedback.find().sort({createdAt:-1}).lean():loadLocal().feedback));
 app.post('/api/seed',auth,async(req,res)=>{if(useMongo){await Product.deleteMany({});await Product.insertMany(products);await Review.deleteMany({});await Review.insertMany(demo.reviews);await Post.deleteMany({});await Post.insertMany(demo.posts);await Analytics.deleteMany({});await Analytics.insertMany(Object.entries(demo.analytics).map(([platform,v])=>({platform,...v})));return res.json({ok:true,message:'Demo data loaded to MongoDB'});}localStore=JSON.parse(JSON.stringify(demo));fs.writeFileSync(localFile,JSON.stringify(localStore,null,2));res.json({ok:true,message:'Demo data loaded locally'});});
 app.get('*',(req,res)=>res.sendFile(path.join(__dirname,'public','index.html')));
-app.listen(PORT,()=>console.log(`NORRA running on http://localhost:${PORT}`));
+app.listen(PORT,()=>console.log(`NORRA running on port ${PORT}`));
