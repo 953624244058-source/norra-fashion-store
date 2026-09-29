@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NORRA | Fashion Store</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; color: #222; background: #f8f7f5; }
+    header {
+      min-height: 75px; padding: 15px 5%; background: white;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 15px; border-bottom: 1px solid #eee;
+    }
+    .logo { font-size: 27px; font-weight: bold; letter-spacing: 5px; }
+    nav { display: flex; gap: 22px; flex-wrap: wrap; }
+    nav a { text-decoration: none; color: #222; font-size: 15px; }
+    nav a:hover { color: #888; }
+    .hero {
+      min-height: 520px; padding: 60px 8%; display: flex;
+      align-items: center;
+      background: linear-gradient(120deg, #eadbd3, #fff);
+    }
+    .hero-content { max-width: 650px; }
+    .small-title { font-size: 13px; letter-spacing: 4px; color: #777; margin-bottom: 20px; }
+    h1 { font-size: clamp(42px, 7vw, 65px); line-height: 1.05; margin-bottom: 22px; }
+    h1 span { font-weight: normal; font-style: italic; }
+    .description { color: #666; font-size: 17px; line-height: 1.7; margin-bottom: 30px; }
+    .shop-button {
+      display: inline-block; padding: 15px 30px; background: #222;
+      color: white; text-decoration: none; letter-spacing: 1px;
+    }
+    .shop-button:hover { background: #555; }
+    .categories { padding: 65px 5%; text-align: center; background: white; }
+    h2 { font-size: 32px; margin-bottom: 30px; }
+    .category-container {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px; max-width: 1000px; margin: auto;
+    }
+    .category-card {
+      background: #f3efec; border-radius: 12px; padding: 35px 15px;
+    }
+    .category-icon { font-size: 40px; margin-bottom: 12px; }
+    .category-card h3 { margin-bottom: 8px; }
+    .category-card p { color: #777; }
+    .marketing { padding: 65px 5%; text-align: center; }
+    .marketing > p { color: #666; margin-bottom: 25px; }
+    .platforms {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 18px; max-width: 900px; margin: auto;
+    }
+    .platform-card {
+      background: white; padding: 25px 15px; border-radius: 10px;
+      box-shadow: 0 5px 20px #0000000d;
+    }
+    .platform-icon { font-size: 30px; margin-bottom: 10px; }
+    .platform-card p { color: #777; margin-top: 8px; }
+    footer { background: #222; color: white; text-align: center; padding: 40px 15px; }
+    footer p { color: #aaa; margin-top: 10px; }
+    @media (max-width: 600px) {
+      header { justify-content: center; }
+      nav { justify-content: center; gap: 14px; }
+      .hero { min-height: 430px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">NORRA</div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/shop.html">Shop</a>
+      <a href="/campaign.html">Campaign</a>
+      <a href="/analytics.html">Analytics</a>
+      <a href="/cart.html">Cart 🛒</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <p class="small-title">NEW SEASON 2026</p>
+      <h1>Discover Your<br><span>Perfect Style</span></h1>
+      <p class="description">Discover modern fashion, timeless designs and the latest trends with NORRA.</p>
+      <a href="/shop.html" class="shop-button">SHOP NOW →</a>
+    </div>
+  </section>
+
+  <section class="categories">
+    <h2>Explore Categories</h2>
+    <div class="category-container">
+      <div class="category-card">
+        <div class="category-icon">👗</div>
+        <h3>Women</h3><p>Elegant & Modern</p>
+      </div>
+      <div class="category-card">
+        <div class="category-icon">👔</div>
+        <h3>Men</h3><p>Classic & Stylish</p>
+      </div>
+      <div class="category-card">
+        <div class="category-icon">✨</div>
+        <h3>New Arrivals</h3><p>Latest Trends</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="marketing">
+    <p>DIGITAL MARKETING</p>
+    <h2>Discover NORRA Everywhere</h2>
+    <p>Follow our latest fashion campaigns across multiple digital platforms.</p>
+    <div class="platforms">
+      <div class="platform-card"><div class="platform-icon">📸</div><h3>Instagram</h3><p>Fashion Stories</p></div>
+      <div class="platform-card"><div class="platform-icon">👥</div><h3>Facebook</h3><p>Community</p></div>
+      <div class="platform-card"><div class="platform-icon">▶️</div><h3>YouTube</h3><p>Fashion Videos</p></div>
+      <div class="platform-card"><div class="platform-icon">🎵</div><h3>TikTok</h3><p>Trending Looks</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <h2>NORRA</h2>
+    <p>Fashion that speaks your style.</p>
+    <p>© 2026 NORRA. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
