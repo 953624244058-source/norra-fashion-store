@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NORRA | Shop</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #f8f7f5; color: #222; }
+    header {
+      background: white; padding: 20px 5%; display: flex;
+      justify-content: space-between; align-items: center;
+      border-bottom: 1px solid #eee; flex-wrap: wrap; gap: 15px;
+    }
+    .logo { font-size: 26px; font-weight: bold; letter-spacing: 5px; }
+    nav { display: flex; gap: 20px; flex-wrap: wrap; }
+    nav a { color: #222; text-decoration: none; }
+    .heading { text-align: center; padding: 45px 15px 25px; }
+    .heading h1 { font-size: 36px; margin-bottom: 10px; }
+    .heading p { color: #777; }
+    .products {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px; padding: 25px 5% 60px;
+    }
+    .card {
+      background: white; border-radius: 10px; overflow: hidden;
+      box-shadow: 0 4px 15px #0000000d;
+    }
+    .card img { width: 100%; height: 280px; object-fit: cover; display: block; background: #eee; }
+    .details { padding: 16px; }
+    .details h3 { font-size: 17px; margin-bottom: 8px; }
+    .category { color: #777; font-size: 14px; margin-bottom: 10px; }
+    .price { font-weight: bold; font-size: 17px; }
+    .message { text-align: center; padding: 30px; color: #777; }
+    footer { background: #222; color: white; text-align: center; padding: 25px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">NORRA</div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/shop.html">Shop</a>
+      <a href="/campaign.html">Campaign</a>
+      <a href="/analytics.html">Analytics</a>
+      <a href="/cart.html">Cart 🛒</a>
+    </nav>
+  </header>
+
+  <section class="heading">
+    <h1>Our Collection</h1>
+    <p>Discover your perfect style with NORRA</p>
+  </section>
+
+  <main id="products" class="products">
+    <p class="message">Loading products...</p>
+  </main>
+
+  <footer>
+    <h2>NORRA</h2>
+    <p>Fashion that speaks your style.</p>
+  </footer>
+
+  <script>
+    async function loadProducts() {
+      const container = document.getElementById('products');
+
+      try {
+        const response = await fetch('/api/products');
+        if (!response.ok) throw new Error('Could not load products');
+
+        const products = await response.json();
+        container.innerHTML = '';
+
+        if (!products.length) {
+          container.innerHTML = '<p class="message">No products available.</p>';
+          return;
+        }
+
+        products.forEach(product => {
+          const card = document.createElement('article');
+          card.className = 'card';
+
+          const img = document.createElement('img');
+          img.src = product.image || '';
+          img.alt = product.name || 'NORRA product';
+          img.loading = 'lazy';
+          img.onerror = () => {
+            img.onerror = null;
+            img.src = 'https://placehold.co/600x700?text=NORRA';
+          };
+
+          const details = document.createElement('div');
+          details.className = 'details';
+
+          const name = document.createElement('h3');
+          name.textContent = product.name || 'Product';
+
+          const category = document.createElement('p');
+          category.className = 'category';
+          category.textContent = product.category || '';
+
+          const price = document.createElement('p');
+          price.className = 'price';
+          price.textContent = product.price || '';
+
+          details.append(name, category, price);
+          card.append(img, details);
+          container.appendChild(card);
+        });
+      } catch (error) {
+        container.innerHTML =
+          '<p class="message">Products could not be loaded. Please try again later.</p>';
+      }
+    }
+
+    loadProducts();
+  </script>
+</body>
+</html>
